@@ -1,0 +1,35 @@
+# -------------------------------------- FIRST STAGE -------------------------------------- #
+FROM node:20-alpine AS base
+
+FROM base AS build
+
+WORKDIR /app
+
+ENV PUBLIC_ENVIRONMENT=production
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+
+RUN npm install
+
+COPY . .
+
+COPY env/.env /app/
+RUN set -a && source /app/.env && set +a
+
+RUN npm run build
+
+# -------------------------------------- SECOND STAGE -------------------------------------- #
+FROM base
+
+WORKDIR /app
+
+COPY --from=build /app/build .
+COPY --from=build /app/package.json .
+COPY --from=build /app/package-lock.json .
+
+RUN npm ci --omit dev
+
+ENV PORT=3000
+
+ENTRYPOINT ["node", "."]

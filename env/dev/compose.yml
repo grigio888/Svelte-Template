@@ -1,0 +1,26 @@
+name: app
+
+services:
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ../../
+      dockerfile: env/dev/Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - inet
+    volumes:
+      - ../../src:/app/src
+      - ../../svelte.config.js:/app/svelte.config.js
+      - ../../vite.config.js:/app/vite.config.js
+    env_file:
+      - ../.env
+      - ../.env.secret
+      - .env
+      - .env.secret
+    environment:
+      - PUBLIC_ENVIRONMENT=development
+
+networks:
+  inet:

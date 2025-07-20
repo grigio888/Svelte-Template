@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+:root {
+	/* Texts */
+	--default-font: 'Poppins', sans-serif;
+	font-family: var(--default-font) !important;
+
+	/* Colors */
+	--color-text-200: theme('colors.gray.200');
+	--color-text-300: theme('colors.gray.300');
+	--color-text-400: theme('colors.gray.400');
+	--color-text-500: theme('colors.gray.500');
+	--color-text-600: theme('colors.gray.600');
+	--color-text-700: theme('colors.gray.700');
+	--color-text-800: theme('colors.gray.800');
+	--color-text-900: theme('colors.gray.900');
+	--color-text-950: theme('colors.gray.950');
+
+	--color-bg-950: theme('colors.gray.950');
+	--color-bg-900: theme('colors.gray.900');
+	--color-bg-800: theme('colors.gray.800');
+	--color-bg-700: theme('colors.gray.700');
+	--color-bg-600: theme('colors.gray.600');
+	--color-bg-500: theme('colors.gray.500');
+	--color-bg-400: theme('colors.gray.400');
+	--color-bg-300: theme('colors.gray.300');
+	--color-bg-200: theme('colors.gray.200');
+	--color-bg-100: theme('colors.gray.100');
+
+	--color-theme-950: theme('colors.indigo.950');
+	--color-theme-900: theme('colors.indigo.900');
+	--color-theme-800: theme('colors.indigo.800');
+	--color-theme-700: theme('colors.indigo.700');
+	--color-theme-600: theme('colors.indigo.600');
+	--color-theme-500: theme('colors.indigo.500');
+	--color-theme-400: theme('colors.indigo.400');
+	--color-theme-300: theme('colors.indigo.300');
+	--color-theme-200: theme('colors.indigo.200');
+	--color-theme-100: theme('colors.indigo.100');
+	--color-theme-50: theme('colors.indigo.50');
+
+	--colors-pulse-animation: hsla(0, 0%, 65%, 0.3);
+
+	/* Defaults */
+	--border-width: 2px;
+	--border-radius: 0.25em;
+	--border-color: var(--color-bg-700);
+
+	--header-space: calc(var(--spacing) * 26);
+}
+
+[theme='blue'] {
+	--color-theme-950: theme('colors.blue.950');
+	--color-theme-900: theme('colors.blue.900');
+	--color-theme-800: theme('colors.blue.800');
+	--color-theme-700: theme('colors.blue.700');
+	--color-theme-600: theme('colors.blue.600');
+	--color-theme-500: theme('colors.blue.500');
+	--color-theme-400: theme('colors.blue.400');
+	--color-theme-300: theme('colors.blue.300');
+	--color-theme-200: theme('colors.blue.200');
+	--color-theme-100: theme('colors.blue.100');
+	--color-theme-50: theme('colors.blue.50');
+}
+
+[theme='yellow'] {
+	--color-theme-950: theme('colors.yellow.950');
+	--color-theme-900: theme('colors.yellow.900');
+	--color-theme-800: theme('colors.yellow.800');
+	--color-theme-700: theme('colors.yellow.700');
+	--color-theme-600: theme('colors.yellow.600');
+	--color-theme-500: theme('colors.yellow.500');
+	--color-theme-400: theme('colors.yellow.400');
+	--color-theme-300: theme('colors.yellow.300');
+	--color-theme-200: theme('colors.yellow.200');
+	--color-theme-100: theme('colors.yellow.100');
+	--color-theme-50: theme('colors.yellow.50');
+}
+
+@media (max-width: 768px) {
+	:root {
+		--border-width: 1px;
+	}
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	height: 4px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-bg-900);
+}
+
+::-webkit-scrollbar-thumb {
+	margin-right: 5px;
+	background: var(--color-theme-700);
+	border-radius: 5px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--color-bg-100);
+	color: var(--color-text-700);
+
+	overflow-x: hidden;
+}
+
+*:not(i),
+*:not(i):before,
+*:not(i):after {
+	font-family: var(--default-font) !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	font-family: var(--default-font) !important;
+}
+
+hr {
+	background: var(--border-color);
+	border: none;
+	border-radius: var(--border-radius);
+}
+
+.disabled {
+	pointer-events: none !important;
+	opacity: 0.5 !important;
+}
+
+@theme {
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+	--animate-scale-in: scale-in 0.2s ease;
+	--animate-scale-out: scale-out 0.15s ease;
+	--animate-fade-in: fade-in 0.2s ease;
+	--animate-fade-out: fade-out 0.15s ease;
+	--animate-enter-from-top: enter-from-left 0.2s ease;
+	--animate-enter-from-right: enter-from-right 0.2s ease;
+	--animate-enter-from-left: enter-from-left 0.2s ease;
+	--animate-enter-from-bottom: enter-from-right 0.2s ease;
+	--animate-exit-to-left: exit-to-left 0.2s ease;
+	--animate-exit-to-right: exit-to-right 0.2s ease;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--bits-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--bits-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+	@keyframes scale-in {
+		from {
+			opacity: 0;
+			transform: rotateX(-10deg) scale(0.9);
+		}
+		to {
+			opacity: 1;
+			transform: rotateX(0deg) scale(1);
+		}
+	}
+	@keyframes scale-out {
+		from {
+			opacity: 1;
+			transform: rotateX(0deg) scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: rotateX(-10deg) scale(0.95);
+		}
+	}
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+	@keyframes enter-from-top {
+		from {
+			opacity: 0;
+			transform: translateY(200px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes enter-from-left {
+		from {
+			opacity: 0;
+			transform: translateX(-200px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	@keyframes enter-from-right {
+		from {
+			opacity: 0;
+			transform: translateX(200px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	@keyframes enter-from-bottom {
+		from {
+			opacity: 0;
+			transform: translateY(-200px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	@keyframes exit-to-right {
+		from {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateX(200px);
+		}
+	}
+
+	@keyframes exit-to-left {
+		from {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateX(-200px);
+		}
+	}
+}

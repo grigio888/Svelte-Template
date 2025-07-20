@@ -1,0 +1,20 @@
+name: app
+
+services:
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ../
+      dockerfile: env/Dockerfile.prod
+    ports:
+      - 3000:3000
+    networks:
+      - inet
+    environment:
+      - PUBLIC_ENVIRONMENT=production
+    env_file:
+      - .env
+      - .env.secret
+
+networks:
+  inet:
