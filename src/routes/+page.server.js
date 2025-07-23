@@ -8,7 +8,7 @@ export async function load() {
 
 	let metadata = {
 		title: _('Homepage'),
-		description: 'Here goes a description',
+		description: _('Here goes a description'),
 		keywords: ['some', 'keywords', 'here']
 	};
 

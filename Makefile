@@ -69,7 +69,7 @@ format:  ## Run the formater
 	npm run format
 
 recreate-dev: ## Recreate dev ambient
-	make build env=dev && make up env=dev
+	make build env=dev && make up env=dev cont="backend database"
 
 translate-tokens: ## Sync translation tokens
 	@echo "# ----------------------------------------------------------------------- #"
