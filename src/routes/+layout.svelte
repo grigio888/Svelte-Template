@@ -13,6 +13,7 @@
 	let { data, children } = $props();
 
 	// »»» Components
+    import Header from '$comp/header/Header.svelte';
 	import PageTransition from '$comp/ui/PageTransition.svelte';
 	import Background from '$comp/ui/background/Background.svelte';
 	import Toaster from '$comp/sonner/Toaster.svelte';
@@ -22,6 +23,8 @@
 	locale.set(language);
 </script>
 
+<Header />
+
 <Background />
 
 <PageTransition refresh={data?.url}>
@@ -29,6 +32,7 @@
 </PageTransition>
 
 <Toaster />
+
 {#if PUBLIC_ENVIRONMENT !== 'production'}
 	<div
 		class="pointer-events-none fixed top-0 left-0 z-100 w-30 translate-x-[-25%]
