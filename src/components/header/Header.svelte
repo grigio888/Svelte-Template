@@ -19,7 +19,7 @@
 </script>
 
 <div
-    class="absolute top-0 left-0 w-full h-20 px-8
+    class="fixed top-0 left-0 w-full h-20 px-8
         flex items-center gap-8 justify-between md:justify-normal
         bg-(--color-theme-200-50) backdrop-blur-[2px] border-b border-(--border-color)
         z-50"
