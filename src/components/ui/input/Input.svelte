@@ -1,6 +1,17 @@
 <script>
 	// »»» Props
-	let { id, label, type = 'text', class: classProp, inputClass, ...props } = $props();
+	let {
+        id,
+        label,
+        tooltip,
+        type = 'text',
+        class: classProp,
+        inputClass,
+        ...props
+    } = $props();
+
+    // »»» Components
+    import Tooltip from '$comp/ui/tooltip/Tooltip.svelte';
 
 	// »»» Icons
 	import Eye from 'phosphor-svelte/lib/Eye';
@@ -16,26 +27,31 @@
 		if (seen) typeInput = 'text';
 		else typeInput = 'password';
 	});
+
+    let defaultClass = `focus:ring-opacity-50 w-full rounded-md border border-(--color-theme-300)
+        bg-(--color-bg-100) p-3 py-2 text-sm focus:ring-2 focus:ring-(--color-theme-300)`
 </script>
 
 <div class="flex w-full flex-col gap-2 {classProp}">
-	<label for={id} class="ml-1 text-sm">{label}</label>
+	<label for={id} class="ml-1">{label}</label>
 	<div class="relative w-full">
+        <Tooltip
+            message={tooltip}
+            class='none'
+        >
 		{#if type == 'textarea'}
 			<textarea
 				type={typeInput}
 				{id}
 				{...props}
-				class="focus:ring-opacity-50 w-full rounded-md border border-(--border-color) bg-(--color-bg-900) p-3
-                py-2 text-sm focus:ring-2 focus:ring-(--color-theme-600) {inputClass}"
+                class="{defaultClass} {inputClass}"
 			></textarea>
 		{:else}
 			<input
 				type={typeInput}
 				{id}
 				{...props}
-				class="focus:ring-opacity-50 w-full rounded-md border border-(--border-color) bg-(--color-bg-900) p-3
-                py-2 text-sm focus:ring-2 focus:ring-(--color-theme-600) {inputClass}"
+                class="{defaultClass} {inputClass}"
 			/>
 			{#if type == 'password'}
 				<button
@@ -51,5 +67,6 @@
 				</button>
 			{/if}
 		{/if}
+        </Tooltip>
 	</div>
 </div>
