@@ -46,7 +46,7 @@
 	/* Defaults */
 	--border-width: 2px;
 	--border-radius: 0.25em;
-	--border-color: var(--color-bg-700);
+	--border-color: var(--color-theme-200);
 
 	--header-space: calc(var(--spacing) * 26);
 }
