@@ -16,10 +16,11 @@
 		{name}
 		{checked}
 		aria-labelledby="terms-label"
-		class="data-[state=unchecked]:border-border-input data-[state=unchecked]:bg-background data-[state=unchecked]:hover:border-dark-40 peer
+		class="data-[state=unchecked]:border-border-input data-[state=unchecked]:bg-background
+        data-[state=unchecked]:hover:border-dark-40 peer
         inline-flex size-[25px]
         items-center justify-center rounded-md border border-(--border-color)
-        bg-(--color-bg-900) transition-all duration-150 ease-in-out active:scale-[0.98]"
+        bg-(--color-bg-100) transition-all duration-150 ease-in-out active:scale-[0.98]"
 		{indeterminate}
 	>
 		{#snippet children({ checked, indeterminate })}
