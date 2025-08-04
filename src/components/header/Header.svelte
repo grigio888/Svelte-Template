@@ -26,7 +26,7 @@
     >
     <a
         href="/"
-        class="text-xl font-bold text-(--color-theme-900)"
+        class="text-2xl md:text-xl font-bold text-(--color-theme-900)"
     >
         MyApp
     </a>
