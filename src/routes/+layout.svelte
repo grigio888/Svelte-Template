@@ -14,6 +14,7 @@
 
 	// »»» Components
     import Header from '$comp/header/Header.svelte';
+    import Footer from '$comp/footer/Footer.svelte';
 	import PageTransition from '$comp/ui/PageTransition.svelte';
 	import Background from '$comp/ui/background/Background.svelte';
 	import Toaster from '$comp/sonner/Toaster.svelte';
@@ -42,3 +43,5 @@
 		DEV
 	</div>
 {/if}
+
+<Footer />

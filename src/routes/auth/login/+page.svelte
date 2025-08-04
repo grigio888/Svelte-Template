@@ -22,8 +22,10 @@
 
 <Metadata {...data?.metadata} />
 
-<div class="flex h-screen w-full flex-col items-center justify-center">
-	<Slogan />
+<div class="flex h-full w-full flex-col items-center justify-center">
+	<h1 class="text-5xl font-bold mb-4">
+        Login
+    </h1>
 
     <Frame
         class="w-full max-w-[90%] md:max-w-md mt-8 bg-transparent backdrop-blur-[2px]"

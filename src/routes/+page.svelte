@@ -12,7 +12,7 @@
 
 <Metadata {...data?.metadata} />
 
-<div class="flex h-screen w-full flex-col items-center justify-center">
+<div class="flex h-full w-full flex-col items-center justify-center">
 	<Slogan />
 
     <p>{_("Welcome back!")}</p>

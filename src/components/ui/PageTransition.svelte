@@ -52,13 +52,13 @@
 			out:blur={{ duration: outDuration }}
 			in:fly={{ x: xIn, duration: inDuration, delay: outDuration + 50 }}
 			onoutroend={() => setTimeout(() => (document.body.style.overflow = 'auto'), inDuration)}
-			class="flex w-full flex-col items-center {classProp}"
+			class="flex h-[94vh] w-full flex-col items-center {classProp}"
 		>
 			{@render children()}
 		</div>
 	{/key}
 {:else}
-	<div class="flex w-full flex-col items-center {classProp}">
+	<div class="flex h-[94vh] w-full flex-col items-center {classProp}">
 		{@render children()}
 	</div>
 {/if}
