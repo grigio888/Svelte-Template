@@ -22,5 +22,8 @@ export default {
     "Login into your account": "Entrar na sua conta",
     "Welcome back!": "Bem-vindo de volta!",
     "Enter your username or email": "Digite seu nome de usuário ou e-mail",
-    "Enter your password": "Digite sua senha"
+    "Enter your password": "Digite sua senha",
+    "About": "Sobre",
+    "Contact": "Contato",
+    "Home": "Página Inicial",
 };
