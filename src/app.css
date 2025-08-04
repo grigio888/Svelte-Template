@@ -19,15 +19,25 @@
 	--color-text-950: theme('colors.gray.950');
 
 	--color-bg-950: theme('colors.gray.950');
+	--color-bg-950-50: theme('colors.gray.950/50');
 	--color-bg-900: theme('colors.gray.900');
+	--color-bg-900-50: theme('colors.gray.900/50');
 	--color-bg-800: theme('colors.gray.800');
+    --color-bg-800-50: theme('colors.gray.800/50');
 	--color-bg-700: theme('colors.gray.700');
+    --color-bg-700-50: theme('colors.gray.700/50');
 	--color-bg-600: theme('colors.gray.600');
+    --color-bg-600-50: theme('colors.gray.600/50');
 	--color-bg-500: theme('colors.gray.500');
+    --color-bg-500-50: theme('colors.gray.500/50');
 	--color-bg-400: theme('colors.gray.400');
+    --color-bg-400-50: theme('colors.gray.400/50');
 	--color-bg-300: theme('colors.gray.300');
+    --color-bg-300-50: theme('colors.gray.300/50');
 	--color-bg-200: theme('colors.gray.200');
+    --color-bg-200-50: theme('colors.gray.200/50');
 	--color-bg-100: theme('colors.gray.100');
+    --color-bg-100-50: theme('colors.gray.100/50');
 
 	--color-theme-950: theme('colors.indigo.950');
 	--color-theme-900: theme('colors.indigo.900');
