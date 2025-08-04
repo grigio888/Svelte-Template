@@ -15,9 +15,5 @@
 <div class="flex h-screen w-full flex-col items-center justify-center">
 	<Slogan />
 
-	<div class="grid gap-10">
-		<p class="text-foreground-alt mt-4 max-w-80 text-center text-sm">
-			{_('This is your home page.')}
-		</p>
-	</div>
+    <p>{_("Welcome back!")}</p>
 </div>
