@@ -11,21 +11,24 @@
 
 	// »»» Components
 	import { Button } from 'bits-ui';
+
+    // »»» Styles
+    let defaultClass = `
+        transition-background inline-flex h-10 w-full items-center justify-center
+        text-sm text-[15px] font-semibold shadow-xs
+        duration-300 active:scale-[0.98] active:transition-all
+        disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50
+        ${classProp}
+    `;
+    let primaryClass = "bg-(--color-theme-200) hover:bg-(--color-theme-300)";
+    let secondaryClass = `border border-(--border-color) bg-(--color-bg-100) hover:shadow-[0_0px_10px]
+        hover:shadow-(color:--color-theme-300)`;
+
 </script>
 
 {#if !href}
 	<Button.Root
-		class=" 
-            {!secondary
-			? 'bg-(--color-theme-700) hover:bg-(--color-theme-600)'
-			: `border border-(--border-color)
-                bg-(--color-bg-950) hover:shadow-[0_0px_10px] hover:shadow-(color:--color-theme-700)`}
-            {!pill ? 'rounded-md' : 'rounded-full'}
-            transition-background inline-flex h-10 w-full items-center justify-center
-            text-sm text-[15px] font-semibold shadow-xs
-            duration-300 active:scale-[0.98] active:transition-all
-            disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50
-            {classProp}"
+		class="{defaultClass} {!secondary ? primaryClass : secondaryClass} {!pill ? 'rounded-md' : 'rounded-full'}"
 		{...props}
 	>
 		{@render children?.()}
@@ -33,17 +36,7 @@
 {:else}
 	<a
 		{href}
-		class=" 
-            {!secondary
-			? 'bg-(--color-theme-800) hover:bg-(--color-theme-950)'
-			: `border border-(--border-color)
-                bg-(--color-bg-950) hover:shadow-[0_0px_10px] hover:shadow-(color:--color-theme-700)`}
-            {!pill ? 'rounded-md' : 'rounded-full'}
-            transition-background inline-flex h-10 w-full items-center justify-center
-            text-sm text-[15px] font-semibold shadow-xs
-            duration-300 active:scale-[0.98] active:transition-all
-            disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50
-            {classProp}"
+		class="{defaultClass} {!secondary ? primaryClass : secondaryClass} {!pill ? 'rounded-md' : 'rounded-full'}"
 		{...props}
 	>
 		{@render children?.()}
