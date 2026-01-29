@@ -1,0 +1,75 @@
+.PHONY: help
+
+
+help: ## Display this help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+# -- Application tasks ------------------------------------------------------------- #
+install: ## Install the API dependencies
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Installing dependencies..."
+	@echo "# ----------------------------------------------------------------------- #"
+
+	npm i
+
+build: ## Build the API
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Building the API image: (no-cache = $(if $(no-cache),true,false))"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml build  $(if $(no-cache),--no-cache)
+
+up: ## Run the API
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Running the API container:"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml up -d
+
+down: ## Stop the API
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Stopping the API container:"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml down
+
+logs: ## Show the API container logs
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Showing the API container logs:"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml logs -f
+
+attach: ## Run the API
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Attaching to the API container"
+	@echo "» To exit, use Ctrl + C"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml attach frontend
+
+exec: ## Execute a command in the API container
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Running command in the API container: $(if $(command),$(command),bash)"
+	@echo "# ----------------------------------------------------------------------- #"
+
+	docker compose -f env/$(if $(strip $(env)),$(env)/,dev/)compose.yml exec -it frontend $(if $(command),$(command),sh)
+
+lint:
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Running linter..."
+	@echo "# ----------------------------------------------------------------------- #"
+
+	npm run lint && npm run format && npm run lint
+
+# -- Dev related tasks ------------------------------------------------------------ #
+recreate-dev: ## Recreate dev ambient
+	make build $(if $(no-cache),--no-cache) && make down && make up
+
+# -- i18n related tasks ------------------------------------------------------------ #
+translate-tokens: ## Sync translation tokens
+	@echo "# ----------------------------------------------------------------------- #"
+	@echo "» Syncing translation tokens..."
+	@echo "# ----------------------------------------------------------------------- #"
+
+	node src/i18n/syncTokens.js
